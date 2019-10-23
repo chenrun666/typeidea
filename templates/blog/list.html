@@ -6,6 +6,10 @@
 </head>
 <body>
 
+{% if tag %}
+    分类页: {{ category.name }}
+{% endif %}
+
 <ul>
     {% for post in post_list %}
         <li>
@@ -19,6 +23,32 @@
     {% endfor %}
 </ul>
 
+
+<div>
+    {% for cate in category %}
+        <a href="/category/{{ cate.id }}">{{ cate.name }}</a>
+    {% endfor %}
+
+</div>
+<hr>
+
+<div>
+    {% for nav in navs %}
+        <a href="/category/{{ nav.id }}">{{ nav.name }}</a>
+    {% endfor %}
+
+</div>
+
+<hr>
+
+<div>
+    {% for sidebar in sidebars %}
+        <h4>{{ sidebar.title }}</h4>
+        {{ sidebar.content }}
+
+    {% endfor %}
+
+</div>
 
 </body>
 </html>
