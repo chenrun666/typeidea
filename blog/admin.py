@@ -53,7 +53,7 @@ class PostAdmin(BaseOwnerAdmin):
 
     list_display = (
         "title", "category", "status",
-        "created_time"
+        "created_time", "operator"
     )
     list_display_links = []
 

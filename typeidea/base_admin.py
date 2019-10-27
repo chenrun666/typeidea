@@ -1,5 +1,7 @@
 from django.contrib import admin
 
+from django.core.exceptions import FieldError
+
 
 class BaseOwnerAdmin(admin.ModelAdmin):
     exclude = ("owner",)
@@ -10,4 +12,7 @@ class BaseOwnerAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
         qs = super(BaseOwnerAdmin, self).get_queryset(request)
-        return qs.filter(owner=request.user)
+        try:
+            return qs.filter(owner=request.user)
+        except FieldError:
+            return qs
